@@ -86,7 +86,7 @@ function toggleMusic() {
 
 function sendWhatsApp() {
     const message = encodeURIComponent("Aku sudah melihat pesanmu... Dan jawabanku adalah Aku juga mencintamu ❤️");
-    const phoneNumber = "087830450253"; // Masukkan nomor WhatsApp tujuan
+    const phoneNumber = "+62 87830450253"; // Masukkan nomor WhatsApp tujuan
     window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`);
 }
 
