@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    padding: 20px 0;
+    background-color: #ffdde1;
+    position: relative;
+    overflow-x: hidden;
+    display: block; /* Changed from flex to block */
+}
+
+/* Background Animation */
+.bg-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.gradient-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff69b4, #ff1493, #ff69b4);
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+/* Main Content */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+  
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    z-index: 1;
+    animation: float 3s ease-in-out infinite;
+    margin: 20px auto; /* Added margin auto */
+    min-height: min-content; /* Ensures content determines height */
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Image Section */
+.image-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem;
+    position: relative;
+}
+
+.heart-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Messages */
+#message-container {
+    min-height: 200px; /* Added minimum height */
+    margin-bottom: 20px; /* Added margin */
+}
+
+.message {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    color: #ff1493;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.message.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.5s ease;
+}
+
+/* Buttons */
+.love-button {
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin: 1rem 0;
+}
+
+.love-button:hover {
+    transform: scale(1.2);
+}
+
+.whatsapp-button {
+    background: #25d366;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 20px 0; /* Increased margin */
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
+}
+
+/* Floating Hearts */
+@keyframes floatHeart {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+.floating-heart {
+    position: fixed;
+    font-size: 20px;
+    pointer-events: none;
+    animation: floatHeart 4s linear forwards;
+}
+
+/* Audio Control */
+.audio-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* Added Media Queries for better responsiveness */
+@media screen and (max-height: 700px) {
+    .container {
+        margin: 10px auto;
+        padding: 1rem;
+    }
+    
+    .image-container {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 1rem;
+    }
+    
+    .message {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+    }
+    
+    #message-container {
+        min-height: 150px;
+    }
+}
